@@ -1,9 +1,18 @@
-import {hexToRgb255, hslToRgb255, hsvToRgb255, rgb255ToHex, rgb255ToHsl, rgb255ToHsv} from "../converter";
+import {
+    hexToHsl,
+    hslToHex,
+    hslToHsv,
+    hsvToHsl,
+    hslToRgb255,
+    rgb255ToHsl,
+} from "../converter";
 
 function lightenHslColor(color, percent) {
-    color.l += percent / 100;
+    color.l += (percent / 100);
     if (color.l > 1) {
         color.l = 1;
+    } else if (color.l < 0) {
+        color.l = 0;
     }
     return color;
 }
@@ -21,19 +30,19 @@ function darkenRgb255Color(color, percent) {
 }
 
 function lightenHexColor(color, percent) {
-    return rgb255ToHex(lightenRgb255Color(hexToRgb255(color), percent));
+    return hslToHex(lightenHslColor(hexToHsl(color), percent));
 }
 
 function darkenHexColor(color, percent) {
-    return rgb255ToHex(darkenHslColor(hexToRgb255(color), percent));
+    return hslToHex(darkenHslColor(hexToHsl(color), percent));
 }
 
 function lightenHsvColor(color, percent) {
-    return rgb255ToHsv(lightenRgb255Color(hsvToRgb255(color), percent));
+    return hslToHsv(lightenHslColor(hsvToHsl(color), percent));
 }
 
 function darkenHsvColor(color, percent) {
-    return rgb255ToHsv(darkenHslColor(hsvToRgb255(color), percent));
+    return hslToHsv(darkenHslColor(hsvToHsl(color), percent));
 }
 
 export {

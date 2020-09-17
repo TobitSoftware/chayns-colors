@@ -1,4 +1,4 @@
-import {HEX_REGEX} from "../constants";
+import {HEX_REGEX} from "../../utils/constants";
 import {isString} from "../../utils/is";
 
 export default function normalizeHexString(hex) {

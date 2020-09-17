@@ -1,4 +1,4 @@
-import {HEX_REGEX} from '../constants';
+import {HEX_REGEX} from '../../utils/constants';
 import {isHex, isNumber} from '../../utils/is';
 
 export default function hexToRgb255(hex) {

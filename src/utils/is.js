@@ -1,24 +1,15 @@
-import {HEX_REGEX, RGB_REGEX} from "../converter";
+import {HEX_REGEX, RGB_REGEX} from "./constants";
 
 export function isString(value) {
     return typeof value === 'string';
 }
 
 export function isNumber(value) {
-    // eslint-disable-next-line no-restricted-globals
     return typeof value === 'number' && !isNaN(value);
 }
 
-export function isBoolean(value) {
-    return typeof value === 'boolean';
-}
-
-export function isFunction(value) {
-    return typeof value === 'function';
-}
-
 export function isNullOrUndefined(value) {
-    return value === undefined || value === null;
+    return value === undefined || value === null || isNaN(value);
 }
 
 export function isObject(value) {

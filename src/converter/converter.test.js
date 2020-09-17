@@ -10,9 +10,6 @@ import {
     normalizeRgbString,
     rgb1ToRgb255,
     rgb255ToRgb1,
-    checkTransparency,
-    HEX_REGEX,
-    RGB_REGEX,
     rgb255ToHsv,
     rgb255ToHsl,
     hexToHsv,
@@ -20,57 +17,41 @@ import {
     hslToHex,
     hsvToRgb255,
     hsvToHex,
-    hexToHsl,
+    hexToHsl, hexToRgb1, rgb1ToHex, hslToHsv, hsvToHsl,
 } from "./index";
 import {expect, test} from "@jest/globals";
-
-function getRandomRgb({transparency = false, rgb1 = false} = {}) {
-    const rgb = {r: null, g: null, b: null};
-    if (transparency) {
-        rgb.a = null;
-    }
-    for (const component of Object.keys(rgb)) {
-        rgb[component] = Math.random();
-        if (!rgb1 && component !== 'a') {
-            rgb[component] = Math.round(rgb[component] * 255);
-        }
-    }
-    return rgb;
-}
-
-function getRandomHex(transparency = false) {
-    return rgb255ToHex(getRandomRgb({transparency}));
-}
+import {getRandomHexColor, getRandomRgb255Color} from "../utils/randomColor";
+import {RGB_REGEX} from "../utils/constants";
 
 test('hexToRgbToHex', () => {
-    let color = getRandomHex();
+    let color = getRandomHexColor();
     expect(rgb255ToHex(hexToRgb255(color))).toStrictEqual(color);
-    color = getRandomHex(true);
+    color = getRandomHexColor(true);
     expect(rgb255ToHex(hexToRgb255(color))).toStrictEqual(color);
 })
 
 test('normalizeHexString', () => {
-    let color = getRandomHex();
+    let color = getRandomHexColor();
     expect(normalizeHexString(color)).toStrictEqual(color);
     expect(normalizeHexString(color.substring(1))).toStrictEqual(color);
 })
 
 test('normalizeRgbString', () => {
-    let color = getRandomRgb();
+    let color = getRandomRgb255Color();
     expect(normalizeRgbString(color)).toMatch(RGB_REGEX);
 })
 
 test('rgbToHslToRgb', () => {
-    let color = getRandomRgb();
+    let color = getRandomRgb255Color();
     expect(hslToRgb255(rgb255ToHsl(color))).toStrictEqual(color);
-    color = getRandomRgb({transparency: true});
+    color = getRandomRgb255Color({transparency: true});
     expect(hslToRgb255(rgb255ToHsl(color))).toStrictEqual(color);
 })
 
 test('rgbToHsvToRgb', () => {
-    let color = getRandomRgb();
+    let color = getRandomRgb255Color();
     expect(hsvToRgb255(rgb255ToHsv(color))).toStrictEqual(color);
-    color = getRandomRgb({transparency: true});
+    color = getRandomRgb255Color({transparency: true});
     expect(hsvToRgb255(rgb255ToHsv(color))).toStrictEqual(color);
 })
 
@@ -105,6 +86,15 @@ test('invalid values test', () => {
         expect(hsvToRgb255(invalidValue)).toBe(null);
         expect(hsvToHex(invalidValue)).toBe(null);
         expect(hexToHsl(invalidValue)).toBe(null);
-        checkTransparency(invalidValue);
+        expect(hexToRgb1(invalidValue)).toBe(null);
+        expect(rgb1ToHex(invalidValue)).toBe(null);
+        expect(hsvToHsl(invalidValue)).toBe(null);
+        expect(hslToHsv(invalidValue)).toBe(null);
     })
 })
+
+test('rgbString', () => {
+    const rgbString = getRgb255String({r: 0, g: 100, b: 200});
+    expect(rgbString).toStrictEqual('rgb(0, 100, 200)');
+    expect(normalizeRgbString(rgbString)).toStrictEqual('rgb(0, 100, 200)');
+});

@@ -1,5 +1,7 @@
 import {darkenHexColor, lightenHexColor} from "./lightenDarken";
 import {hexToHsl} from "../converter";
+import {colorPalette, specials} from "./constants";
+import {mixHex} from "./index";
 
 function getColorBrightness(color, newCalculation) {
     const rgb = hexToRgb(color);
@@ -28,7 +30,7 @@ function getAvailableColorList() {
     return Object.keys(colorPalette[0]);
 }
 
-function getColorFromPalette(colorId, {color, colorMode, secondaryColor}) {
+function getColorFromPalette(colorId, {color = '#808080', colorMode = 0, secondaryColor = null}) {
     const colorData = JSON.parse(JSON.stringify(colorPalette[colorMode][colorId])); // copy array
 
     if (!secondaryColor) {
@@ -94,9 +96,9 @@ function getColorFromPalette(colorId, {color, colorMode, secondaryColor}) {
 
     if (Array.isArray(colorData)) {
         if (colorData.length === 2) {
-            return mix(color, colorData[0], colorData[1]);
+            return mixHex(color, colorData[0], colorData[1]);
         } else if (colorData.length === 3) {
-            return mix(colorData[0], colorData[1], colorData[2]);
+            return mixHex(colorData[0], colorData[1], colorData[2]);
         }
     }
     return colorData;

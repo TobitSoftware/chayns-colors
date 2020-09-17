@@ -9,7 +9,7 @@ import {
     darkenHsvColor,
     darkenRgb255Color
 } from "./lightenDarken";
-import {mixHsv, mixHsl, mixRgb255, mixHex} from "./mix";
+import {mixHsv, mixHsl, mixRgb, mixHex} from "./mix";
 
 export {
     getAvailableColorList,
@@ -24,6 +24,6 @@ export {
     darkenRgb255Color,
     mixHsv,
     mixHsl,
-    mixRgb255,
+    mixRgb,
     mixHex
 };
