@@ -1,7 +1,10 @@
 import {HEX_REGEX} from '../constants';
-import {isNumber} from '../../utils/is';
+import {isHex, isNumber} from '../../utils/is';
 
 export default function hexToRgb255(hex) {
+    if (!isHex(hex)) {
+        return null;
+    }
     const components = hex.match(HEX_REGEX);
     const retObj = {
         r: parseInt(components[1].substring(0, 2), 16),

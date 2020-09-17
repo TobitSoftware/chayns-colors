@@ -1,6 +1,10 @@
-import checkTransparency from "../checkTransparency";
+import checkTransparency from "../../utils/checkTransparency";
+import {isHsv} from "../../utils/is";
 
 export default function hsvToRgb1(hsv) {
+    if (!isHsv(hsv)) {
+        return null;
+    }
     const {s, v} = hsv;
     let {h} = hsv;
     h /= 360;

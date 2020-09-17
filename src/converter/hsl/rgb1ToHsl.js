@@ -1,18 +1,23 @@
-import checkTransparency from "../checkTransparency";
+import checkTransparency from "../../utils/checkTransparency";
+import {isRgb1} from "../../utils/is";
 
-export default function rgb1ToHsl({r, g, b, a}) {
-    const rr = r, gg = g, bb = b;
-    const max = Math.max(rr, gg, bb);
-    const min = Math.min(rr, gg, bb);
+export default function rgb1ToHsl(rgb) {
+    if (!isRgb1(rgb)) {
+        return null;
+    }
+
+    const {r, g, b, a} = rgb;
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
     let h;
     if (max === min) {
         h = 0;
-    } else if (max === rr) {
-        h = 60 * (((gg - bb) / (max - min)));
-    } else if (max === gg) {
-        h = 60 * (2 + ((bb - rr) / (max - min)));
-    } else if (max === bb) {
-        h = 60 * (4 + ((rr - gg) / (max - min)));
+    } else if (max === r) {
+        h = 60 * (((g - b) / (max - min)));
+    } else if (max === g) {
+        h = 60 * (2 + ((b - r) / (max - min)));
+    } else if (max === b) {
+        h = 60 * (4 + ((r - g) / (max - min)));
     }
     if (h < 0) {
         h += 360;

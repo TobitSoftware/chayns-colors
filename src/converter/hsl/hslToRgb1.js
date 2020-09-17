@@ -1,6 +1,11 @@
-import checkTransparency from "../checkTransparency";
+import checkTransparency from "../../utils/checkTransparency";
+import {isHsl} from "../../utils/is";
 
-export default function hslToRgb1({h, s, l, a}) {
+export default function hslToRgb1(hsl) {
+    if (!isHsl(hsl)) {
+        return null;
+    }
+    const {h, s, l, a} = hsl;
     let r, g, b;
 
     if (s === 0) {

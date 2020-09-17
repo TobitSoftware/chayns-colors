@@ -1,4 +1,5 @@
-import checkTransparency from "../checkTransparency";
+import checkTransparency from "../../utils/checkTransparency";
+import {isRgb255} from "../../utils/is";
 
 function componentToHex(c) {
     const hex = Math.round(c).toString(16);
@@ -6,6 +7,10 @@ function componentToHex(c) {
 }
 
 export default function rgb255ToHex(rgb) {
+    if (!isRgb255(rgb)) {
+        return null;
+    }
+
     const r = Math.round(rgb.r);
     const g = Math.round(rgb.g);
     const b = Math.round(rgb.b);

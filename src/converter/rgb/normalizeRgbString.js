@@ -1,7 +1,11 @@
 import {RGB_REGEX} from "../constants";
 import getRgb255String from "./getRgb255String";
+import {isString} from "../../utils/is";
 
-export default function normalizeHexString(rgb) {
+export default function normalizeRgbString(rgb) {
+    if (!isString(rgb)) {
+        return getRgb255String(rgb);
+    }
     const matches = rgb.match(RGB_REGEX);
 
     if (matches) {

@@ -1,7 +1,10 @@
-import {isNumber} from '../../utils/is';
-import checkTransparency from "../checkTransparency";
+import {isRgb1} from '../../utils/is';
+import checkTransparency from "../../utils/checkTransparency";
 
 export default function rgb1ToHsv(rgb) {
+    if (!isRgb1(rgb)) {
+        return null;
+    }
     const {
         r,
         g,
