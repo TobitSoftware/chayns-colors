@@ -1,5 +1,6 @@
 # directories
 .idea
+.run
 node_modules
 src
 
