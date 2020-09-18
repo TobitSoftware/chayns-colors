@@ -36,6 +36,8 @@ HSV (Hue - Saturation - Value)
 This package provides general functions to convert colors from one color model into another as well as chayns-specific functions for generating chayns colors.
 All functions allow the usage of colors with a transparency. You just have to add ``a`` to your color (fourth hexadecimal pair for HEX color).
 
+You can import the functions like this: ``import { isHex } from @chayns/colors;``.
+
 Color model conversion functions:
 - rgb1ToRgb255(rgb1)
 - rgb1ToHex(rgb1)
