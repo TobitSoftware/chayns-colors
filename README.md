@@ -114,4 +114,4 @@ Chayns-specific functions
 3. Run tests with ``npm test``
 
 ### Troubleshooting
-If you get the error ``SyntaxError: Unexpected token {``, you have to update your node version.
+If you get the error ``SyntaxError: Unexpected token {``, you have to update your node version to at least Node 10.
