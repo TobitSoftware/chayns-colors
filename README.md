@@ -1,5 +1,5 @@
 # @chayns/colors
-JavaScript helper functions for the calculation of colors for chayns
+JavaScript utility functions for the calculation of colors for chayns
 
 ## Usage
 
@@ -8,18 +8,20 @@ This package can be installed from npm using ``npm install @chayns/colors``.
 
 ### Color Model Value Ranges
 
-HEX (Hexadecimal)
+#### [RGB (Red - Green - Blue)](https://en.wikipedia.org/wiki/RGB_color_model)
+HEX
 - Three (four with transparency) components of each two hexadecimal characters, starting with a ``#``.
 - Example: #00ff3d (chayns blue)
 
-RGB255 (Red - Green - Blue)
+RGB255
 - r, g, b: 0 - 255
 - a (transparency, optional): 0 - 1
 
-RGB1 (Red - Green - Blue)
+RGB1
 - r, g, b: 0 - 1
 - a (transparency, optional): 0 - 1
 
+#### [HSL and HSV](https://en.wikipedia.org/wiki/HSL_and_HSV)
 HSL (Hue - Saturation - Lightness)
 - h: 0 - 360
 - s, l: 0 - 1
@@ -32,6 +34,7 @@ HSV (Hue - Saturation - Value)
 
 ### Available Functions
 This package provides general functions to convert colors from one color model into another as well as chayns-specific functions for generating chayns colors.
+All functions allow the usage of colors with a transparency. You just have to add ``a`` to your color (fourth hexadecimal pair for HEX color).
 
 Color model conversion functions:
 - rgb1ToRgb255(rgb1)
