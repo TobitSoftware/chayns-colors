@@ -43,26 +43,18 @@ Color model conversion functions:
 - rgb1ToHex(rgb1)
 - rgb1ToHsl(rgb1)
 - rgb1ToHsv(rgb1)
-
-
 - rgb255ToRgb1(rgb255)
 - rgb255ToHex(rgb255)
 - rgb255ToHsl(rgb255)
 - rgb255ToHsv(rgb255)
-
-
 - hexToRgb1(hex)
 - hexToRgb255(hex)
 - hexToHsl(hex)
 - hexToHsv(hex)
-
-
 - hslToRgb1(hsl)
 - hslToRgb255(hsl)
 - hslToHex(hsl)
 - hslToHsv(hsl)
-
-
 - hsvToRgb1(hsv)
 - hsvToRgb255(hsv)
 - hsvToHex(hsv)
@@ -90,11 +82,6 @@ Lightening/darkening functions:
 - darkenRgb255Color(color, percent)
 
 Type check functions:
-- isString(value)
-- isNumber(value)
-- isNullOrUndefined(value)
-- isObject(value)
-- isInInterval(value)
 - isHex(value)
 - isRgbString(value)
 - isRgb255(value)
