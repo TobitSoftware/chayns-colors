@@ -1,7 +1,11 @@
 module.exports = {
   roots: [
-    '<rootDir>/dist',
+    '<rootDir>/cjs',
   ],
+  verbose: true,
+  transform: {
+    '^.+\\.js$': 'babel-jest',
+  },
   testRegex: '(/tests/.*|(\\.|/)(test|spec))\\.js?$',
   moduleFileExtensions: [
     'js',

@@ -1,5 +1,5 @@
 import { darkenHexColor, lightenHexColor } from './lightenDarken';
-import { hexToHsl } from '../converter';
+import { hexToHsl } from '../converter/index';
 import { colorPalette, specials } from './constants';
 import { mixHex } from './mix';
 import hexToRgb255 from '../converter/hex/hexToRgb255';

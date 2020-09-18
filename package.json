@@ -2,13 +2,21 @@
   "name": "@chayns/colors",
   "version": "1.0.0",
   "description": "JavaScript utility functions for the calculation of colors for chayns",
-  "main": "index.js",
+  "main": "cjs/index.js",
+  "module": "es/index.js",
   "scripts": {
-    "build": "babel ./src -d ./dist",
+    "build:cjs": "cross-env NODE_ENV=cjs babel src --out-dir cjs",
+    "build:es": "cross-env NODE_ENV=es babel src --out-dir es",
+    "build": "npm run build:cjs && npm run build:es",
+    "prepublishOnly": "npm run build",
+    "start": "npm link && npm run watch",
     "test": "npm run test:jest && npm run test:treeshaking && npm run test:eslint",
-    "test:jest": "npm run build && jest",
-    "test:treeshaking": "npx treeshake",
-    "test:eslint": "./node_modules/.bin/eslint src --ext .jsx --ext .js"
+    "test:jest": "npm run build:cjs && jest",
+    "test:treeshaking": "npm run build:es && npx treeshake",
+    "test:eslint": "./node_modules/.bin/eslint src --ext .jsx --ext .js",
+    "watch:cjs": "cross-env NODE_ENV=cjs babel -w src --out-dir cjs",
+    "watch:es": "cross-env NODE_ENV=es babel -w src --out-dir es",
+    "watch": "npm run build:cjs && npm run build:es"
   },
   "repository": {
     "type": "git",
@@ -40,7 +48,8 @@
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^4.0.0",
     "jest": "^26.4.2",
-    "tree-shake": "^1.0.5"
+    "tree-shake": "^1.0.5",
+    "cross-env": "^7.0.2"
   },
   "dependencies": {}
 }

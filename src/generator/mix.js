@@ -6,7 +6,7 @@ import {
   rgb1ToHsl,
   hslToRgb1,
   hsvToRgb1,
-} from '../converter';
+} from '../converter/index';
 import roundValues from '../utils/roundValues';
 
 function mixRgb(color1, color2, weightPercent = 100) {

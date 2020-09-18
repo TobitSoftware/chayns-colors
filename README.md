@@ -111,7 +111,8 @@ Chayns-specific functions
 ## Development
 1. Clone git repository
 2. Install npm packages
-3. Run tests with ``npm test``
+3. Link with ``npm start``
+4. Run tests with ``npm test``
 
 ### Troubleshooting
 If you get the error ``SyntaxError: Unexpected token {``, you have to update your node version to at least Node 10.
