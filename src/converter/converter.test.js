@@ -23,6 +23,13 @@ import {
 import { getRandomHexColor, getRandomRgb255Color } from '../utils/randomColor';
 import { RGB_REGEX } from '../utils/constants';
 
+test('getRandomHexColor', () => {
+  let color = getRandomHexColor();
+  expect(color).toHaveLength(7);
+  color = getRandomHexColor(true);
+  expect(color).toHaveLength(9);
+});
+
 test('hexToRgbToHex', () => {
   let color = getRandomHexColor();
   expect(rgb255ToHex(hexToRgb255(color))).toStrictEqual(color);
