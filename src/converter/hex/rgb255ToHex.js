@@ -1,5 +1,5 @@
 import checkTransparency from '../../utils/checkTransparency';
-import { isRgb255 } from '../../utils/is';
+import { isNumber, isRgb255 } from '../../utils/is';
 
 function componentToHex(c) {
   const hex = Math.round(c).toString(16);
@@ -16,5 +16,5 @@ export default function rgb255ToHex(rgb) {
   const b = Math.round(rgb.b);
   const a = Math.round(rgb.a * 255);
 
-  return checkTransparency(`#${componentToHex(r)}${componentToHex(g)}${componentToHex(b)}${componentToHex(a)}`);
+  return checkTransparency(`#${componentToHex(r)}${componentToHex(g)}${componentToHex(b)}${componentToHex(a)}`, isNumber(rgb.a));
 }
