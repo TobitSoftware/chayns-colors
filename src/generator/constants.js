@@ -104,7 +104,13 @@ const colorPalette = {
     primary: [specials.COLOR, '#FFFFFF', 100], // site color
     secondary: [specials.SECONDARY_COLOR, '#FFFFFF', 100], // secondary color
     headline: [specials.SECONDARY_COLOR, '#FFFFFF', 100], // secondary color
+    'headline-1': [specials.SECONDARY_COLOR, '#FFFFFF', 100], // secondary color
+    'headline-2': [specials.SECONDARY_COLOR, '#FFFFFF', 100], // secondary color
+    'headline-3': [specials.SECONDARY_COLOR, '#FFFFFF', 100], // secondary color
+    'headline-4': [specials.SECONDARY_COLOR, '#FFFFFF', 100], // secondary color
+    'headline-5': [specials.SECONDARY_COLOR, '#FFFFFF', 100], // secondary color
     text: '#222222',
+    footer: ['#000000', '#FFFFFF', 50],
     'cw-body-background': [specials.COLOR, '#FFFFFF', 10],
     red: '#976464',
     green: '#349044',
@@ -217,7 +223,13 @@ const colorPalette = {
     primary: [specials.COLOR, '#FFFFFF', 100], // site color
     secondary: [specials.SECONDARY_COLOR, '#FFFFFF', 100], // secondary color
     headline: '#FFFFFF',
+    'headline-1': '#FFFFFF',
+    'headline-2': '#FFFFFF',
+    'headline-3': '#FFFFFF',
+    'headline-4': '#FFFFFF',
+    'headline-5': '#FFFFFF',
     text: '#FFFFFF',
+    footer: ['#000000', '#FFFFFF', 50],
     'cw-body-background': [specials.COLOR, '#222222', 10],
     red: '#723F3F',
     green: '#198B2C',
@@ -330,7 +342,13 @@ const colorPalette = {
     primary: [specials.COLOR, '#FFFFFF', 100], // site color
     secondary: [specials.SECONDARY_COLOR, '#FFFFFF', 100], // secondary color
     headline: [specials.SECONDARY_COLOR, '#FFFFFF', 100], // secondary color
+    'headline-1': [specials.SECONDARY_COLOR, '#FFFFFF', 100],
+    'headline-2': [specials.SECONDARY_COLOR, '#FFFFFF', 100],
+    'headline-3': [specials.SECONDARY_COLOR, '#FFFFFF', 100],
+    'headline-4': [specials.SECONDARY_COLOR, '#FFFFFF', 100],
+    'headline-5': [specials.SECONDARY_COLOR, '#FFFFFF', 100],
     text: '#222222',
+    footer: ['#000000', '#FFFFFF', 50],
     'cw-body-background': '#FFFFFF',
     red: '#976464',
     green: '#349044',

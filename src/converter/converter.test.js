@@ -41,6 +41,8 @@ test('normalizeHexString', () => {
   const color = getRandomHexColor();
   expect(normalizeHexString(color)).toStrictEqual(color);
   expect(normalizeHexString(color.substring(1))).toStrictEqual(color);
+  expect(normalizeHexString('#222')).toStrictEqual('#222222');
+  expect(normalizeHexString('gray')).toStrictEqual('#808080');
 });
 
 test('normalizeRgbString', () => {

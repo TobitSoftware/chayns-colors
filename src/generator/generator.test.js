@@ -27,3 +27,13 @@ test('primaryColorTest', () => {
 test('getAvailableColorList', () => {
   expect(getAvailableColorList()).toBeInstanceOf(Object);
 });
+
+test('generateColors', () => {
+  for (let colorMode = 0; colorMode <= 2; colorMode += 1) {
+    const color = getRandomHexColor();
+    getAvailableColorList().forEach((colorId) => {
+      const generatedColor = getColorFromPalette(colorId, { color, colorMode });
+      expect(generatedColor).toHaveLength(7);
+    });
+  }
+});
