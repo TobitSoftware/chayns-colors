@@ -8,7 +8,7 @@
     "build:cjs": "cross-env NODE_ENV=cjs babel src --out-dir cjs",
     "build:es": "cross-env NODE_ENV=es babel src --out-dir es",
     "build": "npm run build:cjs && npm run build:es",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run test && npm run build",
     "start": "npm link && npm run watch",
     "test": "npm run test:jest && npm run test:treeshaking && npm run test:eslint",
     "test:jest": "npm run build:cjs && jest",

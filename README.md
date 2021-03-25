@@ -102,6 +102,9 @@ Chayns-specific functions
 2. Install npm packages
 3. Link with ``npm start``
 4. Run tests with ``npm test``
+   
+### Publishing
+Increase version with ``npm version patch`` or ``npm version minor`` and push the commit and version tag. The npm package will be published via GitHub Actions.
 
 ### Troubleshooting
 If you get the error ``SyntaxError: Unexpected token {``, you have to update your node version to at least Node 10.
