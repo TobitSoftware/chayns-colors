@@ -62,7 +62,7 @@ function getColorFromPalette(colorId, { color = '#808080', colorMode = 0, second
     const brightness = getColorBrightness(color);
     if (brightness < 50 && colorMode === 1) {
       colorData[base400Index] = lightenHexColor(color, (brightness * -1 + 100) * 0.5);
-    } else if (brightness === 100 && hexToHsl(color).s < 15) {
+    } else if (brightness === 100 && hexToHsl(color).s < .15) {
       colorData[base400Index] = '#a8a8a8';
     } else {
       colorData[base400Index] = color;
