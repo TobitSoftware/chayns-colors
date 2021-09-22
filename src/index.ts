@@ -1,5 +1,7 @@
 export * from './converter';
+
 export * from './generator';
+
 export {
   isHex,
   isRgb255,
