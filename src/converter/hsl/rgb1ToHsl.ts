@@ -1,17 +1,18 @@
-import checkTransparency from '../../utils/checkTransparency';
-import { isRgb1 } from '../../utils/is';
+import { isNumber, isRgb1 } from '../../utils/is';
+import type { RGB1, RGBA1 } from '../../types/rgb';
+import type { HSL, HSLA } from '../../types/hsl';
 
-export default function rgb1ToHsl(rgb) {
+export default function rgb1ToHsl(rgb: RGB1 | RGBA1): HSL | HSLA | null {
   if (!isRgb1(rgb)) {
     return null;
   }
 
   const {
-    r, g, b, a,
+    r, g, b,
   } = rgb;
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
-  let h;
+  let h: number = 0;
   if (max === min) {
     h = 0;
   } else if (max === r) {
@@ -31,7 +32,15 @@ export default function rgb1ToHsl(rgb) {
     s = ((max - min) / (1 - Math.abs(max + min - 1)));
   }
   const l = ((max + min) / 2);
-  return checkTransparency({
-    h, s, l, a,
-  });
+
+  if ('a' in rgb && isNumber(rgb.a)) {
+    return {
+      h, s, l,
+      a: rgb.a,
+    };
+  }
+
+  return {
+    h, s, l,
+  };
 }
