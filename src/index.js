@@ -1,4 +1,4 @@
-export * from './converter/index';
+export * from './converter';
 export * from './generator/index';
 export {
   isHex,

@@ -1,5 +1,4 @@
 import { isNumber, isRgb1 } from '../../utils/is';
-import checkTransparency from '../../utils/checkTransparency';
 import type { RGB1, RGBA1 } from '../../types/rgb';
 import type { HSV, HSVA } from '../../types/hsv';
 

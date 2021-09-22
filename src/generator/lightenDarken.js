@@ -5,7 +5,7 @@ import {
   hsvToHsl,
   hslToRgb255,
   rgb255ToHsl,
-} from '../converter/index';
+} from '../converter';
 
 function lightenHslColor(hsl, percent) {
   const color = hsl;
