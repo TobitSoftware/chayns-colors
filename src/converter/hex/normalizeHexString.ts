@@ -1,7 +1,7 @@
 import { HEX_REGEX, SHORT_HEX_REGEX } from '../../utils/constants';
 import { isString } from '../../utils/is';
 
-export default function normalizeHexString(hex) {
+export default function normalizeHexString(hex: string): string | null {
   if (!isString(hex)) {
     return null;
   }
