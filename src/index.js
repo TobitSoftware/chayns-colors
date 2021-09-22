@@ -1,5 +1,5 @@
 export * from './converter';
-export * from './generator/index';
+export * from './generator';
 export {
   isHex,
   isRgb255,
