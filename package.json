@@ -4,10 +4,12 @@
   "description": "JavaScript utility functions for the calculation of colors for chayns",
   "main": "cjs/index.js",
   "module": "es/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build:cjs": "cross-env NODE_ENV=cjs babel src --out-dir cjs",
     "build:es": "cross-env NODE_ENV=es babel src --out-dir es",
-    "build": "npm run build:cjs && npm run build:es",
+    "build:types": "tsc",
+    "build": "npm run build:types && npm run build:cjs && npm run build:es",
     "prepublishOnly": "npm run test && npm run build",
     "start": "npm link && npm run watch",
     "test": "npm run test:jest && npm run test:treeshaking && npm run test:eslint",
@@ -39,6 +41,7 @@
     "@babel/cli": "^7.14.3",
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
+    "@babel/preset-typescript": "^7.15.0",
     "@jest/globals": "^26.6.2",
     "babel-jest": "^26.6.3",
     "cross-env": "^7.0.3",
@@ -49,7 +52,7 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "jest": "^26.6.3",
-    "tree-shake": "^1.0.5"
-  },
-  "dependencies": {}
+    "tree-shake": "^1.0.5",
+    "typescript": "^4.4.3"
+  }
 }
