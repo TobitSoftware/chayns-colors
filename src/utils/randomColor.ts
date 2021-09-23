@@ -1,12 +1,12 @@
 import { rgb255ToHex } from '../converter';
 import type {
-    RGB1,
     RGB255,
-    RGBA1,
     RGBA255,
 } from '../types/rgb';
 
-function getRandomRgb255Color(transparency = false): RGB255 | RGBA255 {
+function getRandomRgb255Color<T extends boolean = false>(
+    transparency: T | undefined = undefined,
+): T extends true ? RGBA255 : RGB255 {
     const rgb: {
         r: number | null;
         g: number | null;
@@ -31,7 +31,7 @@ function getRandomRgb255Color(transparency = false): RGB255 | RGBA255 {
         }
     }
 
-    return rgb as RGB255 | RGBA255 | RGB1 | RGBA1;
+    return rgb as (T extends true ? RGBA255 : RGB255);
 }
 
 function getRandomHexColor(transparency = false): string | null {
