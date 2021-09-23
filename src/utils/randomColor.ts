@@ -6,10 +6,7 @@ import type {
     RGBA255,
 } from '../types/rgb';
 
-function getRandomRgb255Color({
-    transparency = false,
-    rgb1 = false,
-} = {}): RGB255 | RGBA255 | RGB1 | RGBA1 {
+function getRandomRgb255Color(transparency = false): RGB255 | RGBA255 {
     const rgb: {
         r: number | null;
         g: number | null;
@@ -29,7 +26,7 @@ function getRandomRgb255Color({
         const component = Object.keys(rgb)[i] as 'r' | 'g' | 'b' | 'a';
         rgb[component] = Math.random();
 
-        if (!rgb1 && component !== 'a') {
+        if (component !== 'a') {
             rgb[component] = Math.round((rgb[component] || 0) * 255);
         }
     }
@@ -38,7 +35,7 @@ function getRandomRgb255Color({
 }
 
 function getRandomHexColor(transparency = false): string | null {
-    return rgb255ToHex(getRandomRgb255Color({ transparency }));
+    return rgb255ToHex(getRandomRgb255Color(transparency));
 }
 
 export { getRandomHexColor, getRandomRgb255Color };
