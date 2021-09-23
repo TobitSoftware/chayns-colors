@@ -1,6 +1,6 @@
 {
   "name": "@chayns/colors",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "JavaScript utility functions for the calculation of colors for chayns",
   "main": "cjs/index.js",
   "module": "es/index.js",
