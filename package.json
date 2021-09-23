@@ -15,7 +15,7 @@
     "test": "npm run test:jest && npm run test:treeshaking && npm run test:eslint",
     "test:jest": "npm run build:cjs && jest",
     "test:treeshaking": "npm run build:es && npx treeshake",
-    "test:eslint": "./node_modules/.bin/eslint src --ext .jsx --ext .js",
+    "test:eslint": "./node_modules/.bin/eslint src --ext .jsx --ext .js --fix",
     "watch:cjs": "cross-env NODE_ENV=cjs babel src --watch --out-dir cjs",
     "watch:es": "cross-env NODE_ENV=es babel src --watch --out-dir es",
     "watch": "npm run watch:cjs && npm run watch:es"
