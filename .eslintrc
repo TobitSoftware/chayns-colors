@@ -1,3 +1,31 @@
 {
-  "extends": "airbnb/base"
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "typescript"
+  ],
+  "extends": [
+    "airbnb/base",
+    "plugin:import/typescript"
+  ],
+  "rules": {
+    "indent": ["error", 4, {
+      "SwitchCase": 1
+    }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
+  },
+  "settings": {
+    "import/extensions": [".ts", ".tsx"],
+    "import/resolver": {
+      "typescript": { "project": "@(jsconfig|tsconfig).json" }
+    }
+  }
 }
