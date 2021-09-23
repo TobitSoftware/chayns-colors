@@ -1,4 +1,4 @@
-import { isNumber, isObject, isString } from './is';
+import { isObject, isString } from './is';
 import type {
     RGB1,
     RGB255,
@@ -28,7 +28,7 @@ export default function checkTransparency(
     if (!isObject(color)) {
         return null;
     }
-    if ('a' in color && !isNumber(color)) {
+    if ('a' in color) {
         const { a, ...colorWithoutTransparency } = color;
         return { ...colorWithoutTransparency };
     }

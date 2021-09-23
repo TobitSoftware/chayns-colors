@@ -34,7 +34,7 @@ export default function rgb1ToHsv(rgb: RGB1 | RGBA1): HSV | HSVA | null {
     }
     const v = max;
 
-    if ('a' in rgb && !isNumber(rgb.a)) {
+    if ('a' in rgb && isNumber(rgb.a)) {
         return {
             h,
             s,
