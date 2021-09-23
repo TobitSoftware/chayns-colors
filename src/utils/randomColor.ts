@@ -1,9 +1,14 @@
 import { rgb255ToHex } from '../converter';
-import type { RGB1, RGB255, RGBA1, RGBA255 } from '../types/rgb';
+import type {
+    RGB1,
+    RGB255,
+    RGBA1,
+    RGBA255,
+} from '../types/rgb';
 
 function getRandomRgb255Color({
     transparency = false,
-    rgb1 = false
+    rgb1 = false,
 } = {}): RGB255 | RGBA255 | RGB1 | RGBA1 {
     const rgb: {
         r: number | null;

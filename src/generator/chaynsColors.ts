@@ -46,7 +46,8 @@ function getColorFromPalette(
         secondaryColor?: string | null,
     },
 ): string | null {
-    const colorData = JSON.parse(JSON.stringify((colorPalette as any)[colorMode][colorId])); // copy array
+    // copy array
+    const colorData = JSON.parse(JSON.stringify((colorPalette as any)[colorMode][colorId]));
 
     let secondary;
     if (!secondaryColor) {
@@ -100,7 +101,10 @@ function getColorFromPalette(
     if (secondaryBase400Index >= 0) {
         const brightness = getColorBrightness(secondary) || 0;
         if (brightness < 50 && colorMode === 1) {
-            colorData[secondaryBase400Index] = lightenHexColor(secondary, (brightness * -1 + 100) * 0.5);
+            colorData[secondaryBase400Index] = lightenHexColor(
+                secondary,
+                (brightness * -1 + 100) * 0.5,
+            );
         } else if (brightness === 100 && (hexToHsl(secondary)?.s ?? 0) < 15) {
             colorData[secondaryBase400Index] = '#a8a8a8';
         } else {

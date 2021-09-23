@@ -36,7 +36,9 @@ export default function rgb1ToHsv(rgb: RGB1 | RGBA1): HSV | HSVA | null {
 
     if ('a' in rgb && !isNumber(rgb.a)) {
         return {
-            h, s, v,
+            h,
+            s,
+            v,
             a: rgb.a,
         };
     }

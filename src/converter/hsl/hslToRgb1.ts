@@ -55,7 +55,9 @@ export default function hslToRgb1(hsl: HSL | HSLA): RGB1 | RGBA1 | null {
 
     if ('a' in hsl && isNumber(hsl.a)) {
         return {
-            r, g, b,
+            r,
+            g,
+            b,
             a: hsl.a,
         };
     }

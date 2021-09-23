@@ -20,4 +20,3 @@ export {
     mixRgb,
     mixHex,
 } from './mix';
-

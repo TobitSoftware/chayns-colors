@@ -1,5 +1,10 @@
 import { isNumber, isRgb1 } from '../../utils/is';
-import type { RGB1, RGB255, RGBA1, RGBA255 } from '../../types/rgb';
+import type {
+    RGB1,
+    RGB255,
+    RGBA1,
+    RGBA255,
+} from '../../types/rgb';
 
 export default function rgb1ToRgb255(rgb: RGB1 | RGBA1): RGB255 | RGBA255 | null {
     if (!isRgb1(rgb)) {
