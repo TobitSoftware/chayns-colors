@@ -1,14 +1,12 @@
 import { isObject, isString } from './is';
 import type {
     RGB1,
-    RGB255,
     RGBA1,
-    RGBA255,
 } from '../types/rgb';
 import type { HSV, HSVA } from '../types/hsv';
 import type { HSL, HSLA } from '../types/hsl';
 
-type ColorObject = RGB1 | RGBA1 | RGB255 | RGBA255 | HSV | HSVA | HSL | HSLA;
+type ColorObject = RGB1 | RGBA1 | HSV | HSVA | HSL | HSLA;
 
 /**
  * Removes the transparency part of the color
@@ -29,6 +27,7 @@ export default function checkTransparency(
         return null;
     }
     if ('a' in color) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { a, ...colorWithoutTransparency } = color;
         return { ...colorWithoutTransparency };
     }

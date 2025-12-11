@@ -47,7 +47,8 @@ function getColorFromPalette(
     },
 ): string | null {
     // copy array
-    const colorData = JSON.parse(JSON.stringify((colorPalette as any)[colorMode][colorId]));
+    const originalData = colorPalette[colorMode][colorId as keyof typeof colorPalette[0]];
+    const colorData = JSON.parse(JSON.stringify(originalData)) as typeof originalData;
 
     let secondary;
     if (!secondaryColor) {
@@ -56,82 +57,78 @@ function getColorFromPalette(
         secondary = secondaryColor;
     }
 
-    const colorIndex = colorData.indexOf(specials.COLOR);
-    if (colorIndex >= 0) {
-        colorData[colorIndex] = color;
-    }
-    const secondaryColorIndex = colorData.indexOf(specials.SECONDARY_COLOR);
-    if (secondaryColorIndex >= 0) {
-        colorData[secondaryColorIndex] = secondary;
-    }
-
-    const brightnessIndex = colorData.indexOf(specials.BRIGHTNESS);
-    if (brightnessIndex >= 0) {
-        colorData[brightnessIndex] = getColorBrightness(color, false);
-    }
-
-    const newBrightnessIndex = colorData.indexOf(specials.NEW_BRIGHTNESS);
-    if (newBrightnessIndex >= 0) {
-        colorData[newBrightnessIndex] = getColorBrightness(color, true);
-    }
-
-    const base400Index = colorData.indexOf(specials.BASE400);
-    if (base400Index >= 0) {
-        const brightness = getColorBrightness(color) || 0;
-        if (brightness < 50 && colorMode === 1) {
-            colorData[base400Index] = lightenHexColor(color, (brightness * -1 + 100) * 0.5);
-        } else if (brightness === 100 && (hexToHsl(color)?.s ?? 0) < 0.15) {
-            colorData[base400Index] = '#a8a8a8';
-        } else {
-            colorData[base400Index] = color;
+    if (Array.isArray(colorData)) {
+        const colorIndex = colorData.indexOf(specials.COLOR);
+        if (colorIndex >= 0) {
+            colorData[colorIndex] = color;
         }
-    }
-
-    const accent400Index = colorData.indexOf(specials.ACCENT400);
-    if (accent400Index >= 0) {
-        const brightness = getColorBrightness(color) || 0;
-        if (brightness < 50) {
-            colorData[accent400Index] = darkenHexColor('#2F2F2F', (brightness * -1 + 100) * 0.1);
-        } else {
-            colorData[accent400Index] = '#2F2F2F';
+        const secondaryColorIndex = colorData.indexOf(specials.SECONDARY_COLOR);
+        if (secondaryColorIndex >= 0) {
+            colorData[secondaryColorIndex] = secondary;
         }
-    }
-
-    const secondaryBase400Index = colorData.indexOf(specials.SECONDARY_BASE400);
-    if (secondaryBase400Index >= 0) {
-        const brightness = getColorBrightness(secondary) || 0;
-        if (brightness < 50 && colorMode === 1) {
-            colorData[secondaryBase400Index] = lightenHexColor(
-                secondary,
-                (brightness * -1 + 100) * 0.5,
-            );
-        } else if (brightness === 100 && (hexToHsl(secondary)?.s ?? 0) < 15) {
-            colorData[secondaryBase400Index] = '#a8a8a8';
-        } else {
-            colorData[secondaryBase400Index] = secondary;
+        const brightnessIndex = colorData.indexOf(specials.BRIGHTNESS);
+        if (brightnessIndex >= 0) {
+            colorData[brightnessIndex] = getColorBrightness(color, false)!;
         }
-    }
-
-    const secondaryAccent400Index = colorData.indexOf(specials.SECONDARY_ACCENT400);
-    if (secondaryAccent400Index >= 0) {
-        const brightness = getColorBrightness(secondary) || 0;
-        if (brightness < 50) {
-            colorData[secondaryAccent400Index] = darkenHexColor('#2F2F2F', (brightness * -1 + 100) * 0.1);
-        } else {
-            colorData[secondaryAccent400Index] = '#2F2F2F';
+        const newBrightnessIndex = colorData.indexOf(specials.NEW_BRIGHTNESS);
+        if (newBrightnessIndex >= 0) {
+            colorData[newBrightnessIndex] = getColorBrightness(color, true)!;
+        }
+        const base400Index = colorData.indexOf(specials.BASE400);
+        if (base400Index >= 0) {
+            const brightness = getColorBrightness(color) || 0;
+            if (brightness < 50 && colorMode === 1) {
+                colorData[base400Index] = lightenHexColor(color, (brightness * -1 + 100) * 0.5)!;
+            } else if (brightness === 100 && (hexToHsl(color)?.s ?? 0) < 0.15) {
+                colorData[base400Index] = '#a8a8a8';
+            } else {
+                colorData[base400Index] = color;
+            }
+        }
+        const accent400Index = colorData.indexOf(specials.ACCENT400);
+        if (accent400Index >= 0) {
+            const brightness = getColorBrightness(color) || 0;
+            if (brightness < 50) {
+                colorData[accent400Index] = darkenHexColor('#2F2F2F', (brightness * -1 + 100) * 0.1)!;
+            } else {
+                colorData[accent400Index] = '#2F2F2F';
+            }
+        }
+        const secondaryBase400Index = colorData.indexOf(specials.SECONDARY_BASE400);
+        if (secondaryBase400Index >= 0) {
+            const brightness = getColorBrightness(secondary) || 0;
+            if (brightness < 50 && colorMode === 1) {
+                colorData[secondaryBase400Index] = lightenHexColor(
+                    secondary,
+                    (brightness * -1 + 100) * 0.5,
+                )!;
+            } else if (brightness === 100 && (hexToHsl(secondary)?.s ?? 0) < 15) {
+                colorData[secondaryBase400Index] = '#a8a8a8';
+            } else {
+                colorData[secondaryBase400Index] = secondary;
+            }
+        }
+        const secondaryAccent400Index = colorData.indexOf(specials.SECONDARY_ACCENT400);
+        if (secondaryAccent400Index >= 0) {
+            const brightness = getColorBrightness(secondary) || 0;
+            if (brightness < 50) {
+                colorData[secondaryAccent400Index] = darkenHexColor('#2F2F2F', (brightness * -1 + 100) * 0.1)!;
+            } else {
+                colorData[secondaryAccent400Index] = '#2F2F2F';
+            }
         }
     }
 
     if (Array.isArray(colorData)) {
         if (colorData.length === 2) {
-            return mixHex(color, colorData[0], colorData[1]);
+            return mixHex(color, colorData[0] as string, colorData[1] as number);
         }
         if (colorData.length === 3) {
-            return mixHex(colorData[0], colorData[1], colorData[2]);
+            return mixHex(colorData[0] as string, colorData[1] as string, colorData[2] as number);
         }
     }
 
-    return colorData;
+    return colorData as string | null;
 }
 
 export {

@@ -9,15 +9,13 @@ import {
 } from '../converter';
 import roundValues from '../utils/roundValues';
 import type {
-    RGB1,
     RGB255,
-    RGBA1,
     RGBA255,
 } from '../types/rgb';
 import type { HSV, HSVA } from '../types/hsv';
 import type { HSL, HSLA } from '../types/hsl';
 
-function mixRgb<T extends RGB255 | RGB1 | RGBA255 | RGBA1>(
+function mixRgb<T extends RGB255 | RGBA255>(
     color1: T,
     color2: T,
     weightPercent = 100,
