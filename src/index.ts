@@ -9,3 +9,5 @@ export {
     isHsl,
     isHsv,
 } from './utils/is';
+
+export * from './utils/var';
