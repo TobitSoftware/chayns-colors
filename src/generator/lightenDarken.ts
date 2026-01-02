@@ -20,6 +20,11 @@ function lightenHslColor<T extends HSL | HSLA>(hsl: T, percent: number): T {
     } else if (color.l < 0) {
         color.l = 0;
     }
+    if (color.s > 1) {
+        color.s = 1;
+    } else if (color.s < 0) {
+        color.s = 0;
+    }
 
     return color;
 }
